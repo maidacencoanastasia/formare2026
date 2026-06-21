@@ -3,813 +3,434 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Agenda programului de formare continuă Inteligența Artificială în Educație și Cercetare – USARB, 22–29 Iunie 2026" />
-  <title>IA în Educație &amp; Cercetare | Formare Continuă USARB 2026</title>
+  <meta name="description" content="Formare Continuă USARB 2026 – Inteligența Artificială în Educație și Cercetare. 22, 24, 26 și 29 Iunie 2026." />
+  <title>Formare Continuă IA 2026 – USARB</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    /* ─── Landing-page specific styles ─── */
+
+    body { min-height: 100vh; display: flex; flex-direction: column; }
+
+    /* HERO */
+    .lp-hero {
+      background: linear-gradient(140deg, var(--primary-dark) 0%, var(--primary) 55%, var(--primary-light) 100%);
+      color: #fff;
+      padding: 60px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .lp-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(232,160,32,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .lp-eyebrow {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(232,160,32,.18);
+      border: 1px solid rgba(232,160,32,.35);
+      color: var(--accent-light);
+      padding: 5px 16px; border-radius: 100px;
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    .lp-inst {
+      font-size: .8rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom: 14px;
+    }
+    .lp-hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: clamp(1.75rem, 5vw, 3rem);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .lp-hero h1 em { font-style: normal; color: var(--accent-light); }
+    .lp-sub {
+      font-size: 1rem; color: rgba(255,255,255,.7);
+      max-width: 520px; margin: 0 auto;
+    }
+
+    /* SESSIONS GRID */
+    .lp-main {
+      flex: 1;
+      padding: 48px 20px 60px;
+      max-width: 960px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    .lp-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 1.2rem;
+      color: var(--primary); margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .sessions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 20px;
+    }
+
+    /* BASE CARD */
+    .session-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      border: 1.5px solid var(--border);
+      padding: 28px 22px 22px;
+      display: flex; flex-direction: column; gap: 10px;
+      position: relative;
+      overflow: hidden;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    /* ACTIVE card (Module 1 – 22 June) */
+    .session-card.is-active {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(232,160,32,.18), var(--sh-lg);
+    }
+    .session-card.is-active:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 0 3px rgba(232,160,32,.25), var(--sh-lg);
+    }
+
+    /* LOCKED / COMING SOON cards */
+    .session-card.is-soon {
+      opacity: .72;
+      filter: grayscale(.3);
+    }
+    .session-card.is-soon:hover { transform: none; }
+
+    /* decorative top stripe */
+    .card-stripe {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: var(--r-lg) var(--r-lg) 0 0;
+    }
+    .is-active  .card-stripe { background: var(--accent); }
+    .is-soon    .card-stripe { background: var(--border); }
+
+    /* module label */
+    .card-module {
+      font-size: .68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      color: var(--muted); margin-top: 6px;
+    }
+
+    /* date */
+    .card-date {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 1.4rem;
+      color: var(--primary); line-height: 1;
+    }
+    .card-date span {
+      font-size: .8rem; font-weight: 600;
+      color: var(--muted); display: block; margin-top: 3px;
+    }
+
+    /* title */
+    .card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: .88rem;
+      color: var(--text); line-height: 1.3; flex: 1;
+    }
+
+    /* time badge */
+    .card-time {
+      font-size: .75rem; font-weight: 600;
+      color: var(--muted);
+      display: flex; align-items: center; gap: 5px;
+    }
+
+    /* ACTIVE badge */
+    .badge-active {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(232,160,32,.15);
+      border: 1px solid rgba(232,160,32,.35);
+      color: #92600a;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+      align-self: flex-start;
+    }
+    .badge-active .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: .5; transform: scale(1.4); }
+    }
+
+    /* COMING SOON badge */
+    .badge-soon {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+      align-self: flex-start;
+    }
+
+    /* COUNTDOWN inside coming-soon card */
+    .card-countdown {
+      font-family: 'Montserrat', sans-serif;
+      font-size: .8rem; font-weight: 700;
+      color: var(--muted);
+      display: flex; gap: 8px; align-items: center;
+    }
+    .cd-unit {
+      text-align: center; line-height: 1;
+    }
+    .cd-num {
+      display: block;
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--primary);
+    }
+    .cd-label { font-size: .58rem; color: var(--muted); font-weight: 600; text-transform: uppercase; }
+    .cd-sep { font-size: 1rem; color: var(--border); margin-top: -4px; }
+
+    /* CTA BUTTON (active card) */
+    .card-btn {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--primary);
+      color: #fff;
+      padding: 11px 18px; border-radius: var(--r);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700; font-size: .85rem;
+      text-decoration: none;
+      transition: all .2s; margin-top: 4px;
+    }
+    .card-btn:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: var(--sh-md);
+    }
+    .card-btn svg { flex-shrink: 0; }
+
+    /* LOCK icon for coming soon */
+    .card-lock {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      background: var(--bg);
+      color: var(--muted);
+      padding: 10px 18px; border-radius: var(--r);
+      font-size: .83rem; font-weight: 600;
+      margin-top: 4px; border: 1px dashed var(--border);
+    }
+
+    /* NOTICE below grid */
+    .lp-notice {
+      text-align: center;
+      margin-top: 36px;
+      font-size: .85rem; color: var(--muted);
+    }
+    .lp-notice a {
+      color: var(--primary); font-weight: 600; text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .lp-footer {
+      background: var(--primary-dark);
+      color: rgba(255,255,255,.6);
+      text-align: center; padding: 28px 20px;
+      font-size: .82rem; line-height: 1.8;
+    }
+    .lp-footer strong { color: #fff; }
+
+    /* RESPONSIVE */
+    @media (max-width: 500px) {
+      .sessions-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 340px) {
+      .sessions-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- ╔══════════════════════════════════════════╗
-     ║  HERO                                    ║
-     ╚══════════════════════════════════════════╝ -->
-<header class="hero" id="top">
-  <p class="hero-eyebrow">
+<!-- HERO -->
+<header class="lp-hero">
+  <p class="lp-eyebrow">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
     Formare Continuă · USARB · 2026
   </p>
-  <p class="hero-inst">Universitatea de Stat „Alecu Russo" din Bălți</p>
+  <p class="lp-inst">Universitatea de Stat „Alecu Russo" din Bălți</p>
   <h1>Inteligența Artificială în<br><em>Educație &amp; Cercetare</em></h1>
-  <p class="hero-sub">Program de formare continuă · 4 module · 16 ore · ONLINE, Iunie 2026</p>
-  <nav class="hero-chips" aria-label="Navigare rapidă pe zile">
-    <button class="chip active" onclick="go(0)" aria-label="22 Iunie – Modulul 1">📅 22 Iunie</button>
-    <button class="chip"        onclick="go(1)" aria-label="24 Iunie – Modulul 2">📅 24 Iunie</button>
-    <button class="chip"        onclick="go(2)" aria-label="26 Iunie – Modulul 3">📅 26 Iunie</button>
-    <button class="chip"        onclick="go(3)" aria-label="29 Iunie – Modulul 4">📅 29 Iunie</button>
-  </nav>
+  <p class="lp-sub">4 module interactive · 16 ore academice · Bălți &amp; Online, Iunie 2026</p>
 </header>
 
-<!-- ╔══════════════════════════════════════════╗
-     ║  STATS                                   ║
-     ╚══════════════════════════════════════════╝ -->
-<div class="stats" role="region" aria-label="Statistici program">
-  <div class="stats-row">
-    <div class="stat"><span class="stat-n">4</span><span class="stat-l">Zile</span></div>
-    <div class="stat"><span class="stat-n">16</span><span class="stat-l">Ore</span></div>
-    <div class="stat"><span class="stat-n">4</span><span class="stat-l">Module</span></div>
-    <div class="stat"><span class="stat-n">09:30</span><span class="stat-l">Start zilnic</span></div>
-    <div class="stat"><span class="stat-n">13:00</span><span class="stat-l">Finalizare</span></div>
-  </div>
-</div>
+<!-- SESSIONS -->
+<main class="lp-main">
+  <p class="lp-heading">Sesiunile programului</p>
 
-<!-- ╔══════════════════════════════════════════╗
-     ║  STICKY TAB BAR                          ║
-     ╚══════════════════════════════════════════╝ -->
-<div class="tab-bar" role="navigation" aria-label="Modulele programului">
-  <div class="tab-list" role="tablist">
-    <button class="tab active" role="tab" aria-selected="true"  aria-controls="d1" onclick="go(0)">Modulul 1<small>22 Iunie · Luni</small></button>
-    <button class="tab"        role="tab" aria-selected="false" aria-controls="d2" onclick="go(1)">Modulul 2<small>24 Iunie · Miercuri</small></button>
-    <button class="tab"        role="tab" aria-selected="false" aria-controls="d3" onclick="go(2)">Modulul 3<small>26 Iunie · Vineri</small></button>
-    <button class="tab"        role="tab" aria-selected="false" aria-controls="d4" onclick="go(3)">Modulul 4<small>29 Iunie · Luni</small></button>
-  </div>
-</div>
+  <div class="sessions-grid" id="cards">
 
-<!-- ╔══════════════════════════════════════════╗
-     ║  MAIN – DAY PANELS                       ║
-     ╚══════════════════════════════════════════╝ -->
-<main>
-<div class="wrap">
-
-  <!-- LEGEND -->
-  <div class="legend" role="list" aria-label="Legendă tipuri activitate">
-    <span class="legend-item" role="listitem"><span class="ldot" style="background:var(--checkin)"></span>Check-in &amp; Prezență</span>
-    <span class="legend-item" role="listitem"><span class="ldot" style="background:var(--theory)"></span>Teorie</span>
-    <span class="legend-item" role="listitem"><span class="ldot" style="background:var(--practice)"></span>Atelier Practic</span>
-    <span class="legend-item" role="listitem"><span class="ldot" style="background:var(--break)"></span>Pauză</span>
-    <span class="legend-item" role="listitem"><span class="ldot" style="background:var(--wrap)"></span>Rezumat &amp; Feedback</span>
-  </div>
-
-  <!-- ────────────────────────────────────────
-       DAY 1 · 22 IUNIE
-  ──────────────────────────────────────── -->
-  <section class="panel active" id="d1" role="tabpanel" aria-labelledby="tab0">
-
-    <div class="day-card">
-      <div>
-        <p class="day-label">Modulul 1 &nbsp;·&nbsp; 22 Iunie 2026 &nbsp;·&nbsp; Luni</p>
-        <h2 class="day-title">Fundamentele IA Generative &amp;<br>Ingineria Prompturilor</h2>
-        <div class="day-meta">
-          <span>🕘 09:30 – 13:00</span>
-          <span>📍 online</span>
-          <span>⏱ 4 ore academice</span>
-        </div>
-      </div>
-      <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru prezență 22 Iunie -->
-      <a href="https://forms.gle/PREZENTA-22-IUNIE" class="btn-presence" target="_blank" rel="noopener" aria-label="Confirmați prezența 22 Iunie">
-        ✓ Confirmă Prezența
+    <!-- ── MODULE 1 · 22 JUNE · ACTIVE ── -->
+    <div class="session-card is-active">
+      <div class="card-stripe"></div>
+      <span class="badge-active"><span class="dot"></span>Disponibil acum</span>
+      <p class="card-module">Modulul 1</p>
+      <div class="card-date">22 Iunie<span>Luni, 2026</span></div>
+      <p class="card-title">Fundamentele IA Generative &amp; Ingineria Prompturilor</p>
+      <p class="card-time">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        09:30 – 13:00
+      </p>
+      <a href="agenda.html" class="card-btn">
+        Accesați Agenda
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
 
-    <div class="timeline" role="list">
-
-      <div class="tl-row" data-t="checkin" role="listitem">
-        <div class="tl-time">09:30</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Check-in</span>
-          <h3 class="tl-title">Înregistrare &amp; Confirmare Prezență</h3>
-          <p class="tl-desc">Bun venit! Vă rugăm să completați formularul de prezență.</p>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru prezență 22 Iunie -->
-            <a href="https://forms.gle/PREZENTA-22-IUNIE" class="tl-btn tl-btn-blue" target="_blank" rel="noopener">📋 Formular Prezență – 22 Iunie</a>
-          </div>
-        </div></div>
+    <!-- ── MODULE 2 · 24 JUNE · COMING SOON ── -->
+    <div class="session-card is-soon" id="card-m2">
+      <div class="card-stripe"></div>
+      <span class="badge-soon">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        În curând
+      </span>
+      <p class="card-module">Modulul 2</p>
+      <div class="card-date">24 Iunie<span>Miercuri, 2026</span></div>
+      <p class="card-title">IA pentru Proiectare Didactică &amp; Conținut Multimedia</p>
+      <p class="card-time">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        09:30 – 13:00
+      </p>
+      <div class="card-countdown" id="cd-m2" aria-label="Timp rămas până la Modulul 2"></div>
+      <div class="card-lock">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Disponibil pe 24 Iunie
       </div>
-
-      <div class="tl-row" data-t="theory" role="listitem">
-        <div class="tl-time">09:40–<br>10:25</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Teorie · 45 min</span>
-          <h3 class="tl-title">Ce este IA Generativă? Cum „gândesc" Modelele de Limbaj?</h3>
-          <div class="tl-desc"><ul>
-            <li>ChatGPT, Gemini, Claude, Copilot – asemănări și diferențe</li>
-            <li>Fenomenul de halucinație și limitele modelelor</li>
-            <li>Bias-uri algoritmice și protecția datelor cu caracter personal</li>
-            <li>Drepturi de autor în era AI</li>
-          </ul></div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">10:25<br>10:30</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Pauză scurtă · 5 min</span>
-          <h3 class="tl-title">Pauză scurtă</h3>
-          <p class="tl-desc">Scurtă tranziție spre atelier.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">10:30–<br>11:15</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Anatomia unui Prompt Perfect</h3>
-          <div class="tl-desc">
-            Formula: <strong>Rol + Context + Sarcină + Constrângeri + Format de ieșire</strong>
-            <ul>
-              <li>Exerciții pe discipline: Drept, Economie, Pedagogie, Filologie</li>
-              <li>Compararea rezultatelor: prompt simplu vs. prompt structurat</li>
-            </ul>
-          </div>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru întrebări -->
-            <a href="https://forms.gle/INTREBARI-GENERALE" class="tl-btn tl-btn-purple" target="_blank" rel="noopener">❓ Adresați o Întrebare</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">11:15<br>11:30</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">☕ Pauză de cafea · 15 min</span>
-          <h3 class="tl-title">Pauză de Cafea</h3>
-          <p class="tl-desc">Relaxare, discuții informale și networking între participanți.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">11:30–<br>12:15</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Tehnici Avansate de Prompting</h3>
-          <div class="tl-desc"><ul>
-            <li><strong>Few-shot prompting</strong> – oferirea de exemple model pentru ghidarea AI</li>
-            <li><strong>Chain-of-thought</strong> – solicitarea raționamentului pas cu pas</li>
-            <li>Practică: compararea răspunsurilor pe 3 modele AI simultan</li>
-          </ul></div>
-          <h3 class="tl-title">Exercițiu pe Discipline: AI ca Asistent Metodologic</h3>
-          <div class="tl-desc">Fiecare participant elaborează schița unei unități de curs:
-            <ul>
-              <li><strong>Drept:</strong> Spețe juridice complexe generate și rafinate cu AI</li>
-              <li><strong>Economie:</strong> Planificarea unui studiu de caz de business</li>
-              <li><strong>Pedagogie / Filologie:</strong> Proiectarea unei unități didactice interactive</li>
-              <li><strong>Matematică / Informatică:</strong> Probleme contextualizate și soluții pas cu pas</li>
-            </ul>
-          </div>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru feedback Modulul 1 -->
-            <a href="https://forms.gle/inrebari-M1-22-IUNIE" class="tl-btn tl-btn-green" target="_blank" rel="noopener">Atașati rezultat impreuna cu intrebari sau commentarii</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="wrap" role="listitem">
-        <div class="tl-time">12:15–<br>13:00</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Rezumat &amp; Feedback &amp; Reflecție</span>
-          <h3 class="tl-title">Concluzii &amp; Feedback Modulul 1</h3>
-          <p class="tl-desc">Recapitularea conceptelor-cheie. Vă rugăm să completați formularul de feedback!</p>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru feedback Modulul 1 -->
-            <a href="https://forms.gle/FEEDBACK-M1-22-IUNIE" class="tl-btn tl-btn-green" target="_blank" rel="noopener">📝 Feedback Modulul 1</a>
-          </div>
-        </div></div>
-      </div>
-
-    </div><!-- /timeline -->
-  </section>
-
-  <!-- ────────────────────────────────────────
-       DAY 2 · 24 IUNIE
-  ──────────────────────────────────────── -->
-  <section class="panel" id="d2" role="tabpanel" aria-labelledby="tab1">
-
-    <div class="day-card">
-      <div>
-        <p class="day-label">Modulul 2 &nbsp;·&nbsp; 24 Iunie 2026 &nbsp;·&nbsp; Miercuri</p>
-        <h2 class="day-title">IA pentru Proiectare Didactică &amp;<br>Generare de Conținut Multimedia</h2>
-        <div class="day-meta">
-          <span>🕘 09:30 – 13:00</span>
-          <span>📍 online</span>
-          <span>⏱ 4 ore academice</span>
-        </div>
-      </div>
-      <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru prezență 24 Iunie -->
-      <a href="https://forms.gle/PREZENTA-24-IUNIE" class="btn-presence" target="_blank" rel="noopener">✓ Confirmă Prezența</a>
     </div>
 
-    <div class="timeline" role="list">
-
-      <div class="tl-row" data-t="checkin" role="listitem">
-        <div class="tl-time">09:30</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Check-in</span>
-          <h3 class="tl-title">Înregistrare &amp; Recapitulare Modulul 1</h3>
-          <p class="tl-desc">Confirmare prezență și 5 minute de recapitulare a tehnicilor de prompting.</p>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru prezență 24 Iunie -->
-            <a href="https://forms.gle/PREZENTA-24-IUNIE" class="tl-btn tl-btn-blue" target="_blank" rel="noopener">📋 Formular Prezență – 24 Iunie</a>
-          </div>
-        </div></div>
+    <!-- ── MODULE 3 · 26 JUNE · COMING SOON ── -->
+    <div class="session-card is-soon" id="card-m3">
+      <div class="card-stripe"></div>
+      <span class="badge-soon">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        În curând
+      </span>
+      <p class="card-module">Modulul 3</p>
+      <div class="card-date">26 Iunie<span>Vineri, 2026</span></div>
+      <p class="card-title">Evaluarea Asistată de IA &amp; Managementul Plagiatului</p>
+      <p class="card-time">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        09:30 – 13:00
+      </p>
+      <div class="card-countdown" id="cd-m3" aria-label="Timp rămas până la Modulul 3"></div>
+      <div class="card-lock">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Disponibil pe 26 Iunie
       </div>
-
-      <div class="tl-row" data-t="theory" role="listitem">
-        <div class="tl-time">09:30–<br>10:15</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Teorie · 45 min</span>
-          <h3 class="tl-title">Ecosistemul Instrumentelor AI pentru Educație</h3>
-          <div class="tl-desc"><ul>
-            <li>Eficientizarea timpului profesorului: de la planificare la materiale personalizate</li>
-            <li>Dincolo de chat-urile textuale: instrumente specializate pentru educație</li>
-            <li>Adaptarea materialelor la stilurile de învățare ale studenților</li>
-          </ul></div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">10:15–<br>10:20</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Pauză scurtă · 5 min</span>
-          <h3 class="tl-title">Pauză scurtă</h3>
-          <p class="tl-desc">Scurtă pauză.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">10:20–<br>11:05</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Generare de Scenarii &amp; Studii de Caz pe Discipline</h3>
-          <div class="tl-desc"><ul>
-            <li><strong>Economie:</strong> Simulări de management de criză pentru IMM-uri</li>
-            <li><strong>Drept:</strong> Crearea de spețe juridice complexe și motivări</li>
-            <li><strong>Limbi Străine:</strong> Exerciții bazate pe articole de presă autentice</li>
-            <li><strong>Psihologie:</strong> Scenarii de consiliere și studii de caz clinice</li>
-          </ul></div>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru întrebări -->
-            <a href="https://forms.gle/INTREBARI-GENERALE" class="tl-btn tl-btn-purple" target="_blank" rel="noopener">❓ Adresați o Întrebare</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">11:05–<br>11:20</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">☕ Pauză de cafea · 15 min</span>
-          <h3 class="tl-title">Pauză de Cafea</h3>
-          <p class="tl-desc">Relaxare și discuții despre instrumentele descoperite.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">11:20–<br>12:05</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Design Vizual Automatizat: Gamma App &amp; Tome AI</h3>
-          <div class="tl-desc">
-            Transformați o schiță de curs text într-o prezentare interactivă structurată în <strong>sub 5 minute</strong>:
-            <ul>
-              <li>Demo live: de la text simplu la prezentare profesională</li>
-              <li>Practică independentă pe tema disciplinei proprii</li>
-              <li>Exportarea și personalizarea rezultatului</li>
-            </ul>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">12:05–<br>12:10</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Pauză scurtă · 5 min</span>
-          <h3 class="tl-title">Pauză scurtă</h3>
-          <p class="tl-desc">Scurtă pauză de tranziție.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">12:10–<br>12:55</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">MagicSchool AI &amp; Eduaide.Ai – Resurse Educaționale</h3>
-          <div class="tl-desc"><ul>
-            <li>Generarea automată de planuri de lecție detaliate pe teme specifice</li>
-            <li>Crearea de liste de lecturi recomandate și bibliografie adnotată</li>
-            <li>Activități interactive de „spargere a gheții" (icebreakers) pentru prima oră de curs</li>
-          </ul></div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="wrap" role="listitem">
-        <div class="tl-time">12:55–<br>13:00</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Rezumat &amp; Feedback</span>
-          <h3 class="tl-title">Concluzii &amp; Feedback Modulul 2</h3>
-          <p class="tl-desc">Care instrument v-a impresionat cel mai mult? Evaluați sesiunea!</p>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru feedback Modulul 2 -->
-            <a href="https://forms.gle/FEEDBACK-M2-24-IUNIE" class="tl-btn tl-btn-green" target="_blank" rel="noopener">📝 Feedback Modulul 2</a>
-          </div>
-        </div></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ────────────────────────────────────────
-       DAY 3 · 26 IUNIE
-  ──────────────────────────────────────── -->
-  <section class="panel" id="d3" role="tabpanel" aria-labelledby="tab2">
-
-    <div class="day-card">
-      <div>
-        <p class="day-label">Modulul 3 &nbsp;·&nbsp; 26 Iunie 2026 &nbsp;·&nbsp; Vineri</p>
-        <h2 class="day-title">Evaluarea Asistată de IA &amp;<br>Managementul Plagiatului</h2>
-        <div class="day-meta">
-          <span>🕘 09:30 – 13:00</span>
-          <span>📍 online</span>
-          <span>⏱ 4 ore academice</span>
-        </div>
-      </div>
-      <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru prezență 26 Iunie -->
-      <a href="https://forms.gle/PREZENTA-26-IUNIE" class="btn-presence" target="_blank" rel="noopener">✓ Confirmă Prezența</a>
     </div>
 
-    <div class="timeline" role="list">
-
-      <div class="tl-row" data-t="checkin" role="listitem">
-        <div class="tl-time">09:30</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Check-in</span>
-          <h3 class="tl-title">Înregistrare &amp; Recapitulare Modulul 2</h3>
-          <p class="tl-desc">Confirmare prezență și 5 minute de recapitulare a instrumentelor de proiectare didactică.</p>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru prezență 26 Iunie -->
-            <a href="https://forms.gle/PREZENTA-26-IUNIE" class="tl-btn tl-btn-blue" target="_blank" rel="noopener">📋 Formular Prezență – 26 Iunie</a>
-          </div>
-        </div></div>
+    <!-- ── MODULE 4 · 29 JUNE · COMING SOON ── -->
+    <div class="session-card is-soon" id="card-m4">
+      <div class="card-stripe"></div>
+      <span class="badge-soon">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        În curând
+      </span>
+      <p class="card-module">Modulul 4</p>
+      <div class="card-date">29 Iunie<span>Luni, 2026</span></div>
+      <p class="card-title">IA în Cercetare Științifică &amp; Analiza Documentelor Mari</p>
+      <p class="card-time">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        09:30 – 13:00
+      </p>
+      <div class="card-countdown" id="cd-m4" aria-label="Timp rămas până la Modulul 4"></div>
+      <div class="card-lock">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Disponibil pe 29 Iunie
       </div>
-
-      <div class="tl-row" data-t="theory" role="listitem">
-        <div class="tl-time">09:30–<br>10:15</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Teorie · 45 min</span>
-          <h3 class="tl-title">Cum se Schimbă Evaluarea în Era AI?</h3>
-          <div class="tl-desc"><ul>
-            <li>De la memorare la gândire critică – regândirea tipurilor de sarcini</li>
-            <li>Mitul detectoarelor de AI: de ce au o rată ridicată de fals-pozitiv</li>
-            <li>Abordarea etică a suspiciunilor de utilizare AI de studenți</li>
-            <li>Designul evaluărilor autentice care nu pot fi „trișate" cu AI</li>
-          </ul></div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">10:15–<br>10:20</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Pauză scurtă · 5 min</span>
-          <h3 class="tl-title">Pauză scurtă</h3>
-          <p class="tl-desc">Scurtă pauză.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">10:20–<br>11:05</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Generarea de Instrumente de Evaluare cu Quizizz AI &amp; ChatGPT</h3>
-          <div class="tl-desc"><ul>
-            <li>Teste grilă cu variantele de răspuns distractoare de calitate</li>
-            <li>Întrebări deschise axate pe argumentare și raționament critic</li>
-            <li>Mini-proiecte și sarcini de performanță pe discipline specifice</li>
-          </ul></div>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru întrebări -->
-            <a href="https://forms.gle/INTREBARI-GENERALE" class="tl-btn tl-btn-purple" target="_blank" rel="noopener">❓ Adresați o Întrebare</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">11:05–<br>11:20</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">☕ Pauză de cafea · 15 min</span>
-          <h3 class="tl-title">Pauză de Cafea</h3>
-          <p class="tl-desc">Relaxare și schimb de experiențe privind evaluarea.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">11:20–<br>12:05</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Crearea Matricelor de Corectare (Rubrics) cu AI</h3>
-          <div class="tl-desc">
-            Generare de bareme precise pe niveluri de competență (1–5 / A–F):
-            <ul>
-              <li><strong>Psihologie:</strong> Rubrică pentru eseu de psihologie cognitivă</li>
-              <li><strong>Management:</strong> Rubrică pentru analiză de caz strategic</li>
-              <li><strong>Drept:</strong> Barem pentru motivarea soluției juridice</li>
-              <li><strong>Alte discipline:</strong> Adaptare personalizată în 10 minute</li>
-            </ul>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">12:05–<br>12:10</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Pauză scurtă · 5 min</span>
-          <h3 class="tl-title">Pauză scurtă</h3>
-          <p class="tl-desc">Scurtă pauză.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">12:10–<br>12:55</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Feedback Formativ Automatizat pe Texte Studențești</h3>
-          <div class="tl-desc">
-            Simularea corectării unui text cu AI:
-            <ul>
-              <li>Tehnici de generare a sugestiilor structurate de îmbunătățire</li>
-              <li>Economisirea timpului de corectare cu până la 60%</li>
-              <li>Practică: fiecare participant corectează un text relevant disciplinei proprii</li>
-            </ul>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="wrap" role="listitem">
-        <div class="tl-time">12:55–<br>13:00</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Rezumat &amp; Feedback</span>
-          <h3 class="tl-title">Concluzii &amp; Feedback Modulul 3</h3>
-          <p class="tl-desc">Ce strategie de evaluare veți implementa primul semestru? Completați feedback-ul!</p>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru feedback Modulul 3 -->
-            <a href="https://forms.gle/FEEDBACK-M3-26-IUNIE" class="tl-btn tl-btn-green" target="_blank" rel="noopener">📝 Feedback Modulul 3</a>
-          </div>
-        </div></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ────────────────────────────────────────
-       DAY 4 · 29 IUNIE
-  ──────────────────────────────────────── -->
-  <section class="panel" id="d4" role="tabpanel" aria-labelledby="tab3">
-
-    <div class="day-card">
-      <div>
-        <p class="day-label">Modulul 4 &nbsp;·&nbsp; 29 Iunie 2026 &nbsp;·&nbsp; Luni</p>
-        <h2 class="day-title">IA în Cercetare Științifică &amp;<br>Analiza Documentelor Mari</h2>
-        <div class="day-meta">
-          <span>🕘 09:30 – 13:00</span>
-          <span>📍 online</span>
-          <span>⏱ 4 ore academice</span>
-        </div>
-      </div>
-      <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru prezență 29 Iunie -->
-      <a href="https://forms.gle/PREZENTA-29-IUNIE" class="btn-presence" target="_blank" rel="noopener">✓ Confirmă Prezența</a>
     </div>
 
-    <div class="timeline" role="list">
+  </div><!-- /sessions-grid -->
 
-      <div class="tl-row" data-t="checkin" role="listitem">
-        <div class="tl-time">09:30</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Check-in</span>
-          <h3 class="tl-title">Înregistrare &amp; Recapitulare Generală</h3>
-          <p class="tl-desc">Confirmare prezență și trecere în revistă a celor 3 module anterioare în 5 minute.</p>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru prezență 29 Iunie -->
-            <a href="https://forms.gle/PREZENTA-29-IUNIE" class="tl-btn tl-btn-blue" target="_blank" rel="noopener">📋 Formular Prezență – 29 Iunie</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="theory" role="listitem">
-        <div class="tl-time">09:30–<br>10:15</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Teorie · 45 min</span>
-          <h3 class="tl-title">Etică în Cercetare &amp; Motoare Semantice de Căutare</h3>
-          <div class="tl-desc"><ul>
-            <li>Bune practici etice: politici Elsevier, Springer, standarde APA 7 &amp; Chicago</li>
-            <li>Motoare de căutare tradiționale vs. motoare semantice bazate pe AI</li>
-            <li>Cum verifici citările generate de AI (hallucination în cercetare)</li>
-          </ul></div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">10:15–<br>10:20</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Pauză scurtă · 5 min</span>
-          <h3 class="tl-title">Pauză scurtă</h3>
-          <p class="tl-desc">Scurtă pauză.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">10:20–<br>11:05</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Sinteza Literaturii cu Consensus, Elicit &amp; Perplexity AI</h3>
-          <div class="tl-desc">
-            Adresarea întrebărilor de cercetare cu citări exacte din articole indexate:
-            <ul>
-              <li>„Care sunt efectele evaluării formative asupra profesorilor debutanți?" (Pedagogie)</li>
-              <li>„Cum afectează reziliența organizațională echilibrul financiar în criză?" (Economie)</li>
-              <li>„Care este impactul AI asupra dreptului la confidențialitate?" (Drept)</li>
-              <li>Practică pe temele de cercetare proprii ale participanților</li>
-            </ul>
-          </div>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru întrebări -->
-            <a href="https://forms.gle/INTREBARI-GENERALE" class="tl-btn tl-btn-purple" target="_blank" rel="noopener">❓ Adresați o Întrebare</a>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">11:05–<br>11:20</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">☕ Pauză de cafea · 15 min</span>
-          <h3 class="tl-title">Ultima Pauză de Cafea a Programului</h3>
-          <p class="tl-desc">Relaxare înainte de ultimele ateliere. O ocazie de networking.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">11:20–<br>12:05</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Chat cu PDF: NotebookLM (Google), ChatPDF &amp; Claude AI</h3>
-          <div class="tl-desc">
-            Analiza documentelor de mari dimensiuni:
-            <ul>
-              <li><strong>Drept:</strong> Extragerea modificărilor din lege cu 100+ articole în 3 minute</li>
-              <li><strong>Economie:</strong> Sinteza unui raport financiar anual complex</li>
-              <li><strong>Cercetare:</strong> Compararea teoriilor din 2–3 monografii în paralel</li>
-              <li><strong>Pedagogie:</strong> Crearea unui ghid metodologic din curricula naționale</li>
-            </ul>
-          </div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="break" role="listitem">
-        <div class="tl-time">12:05–<br>12:10</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Pauză scurtă · 5 min</span>
-          <h3 class="tl-title">Pauză scurtă</h3>
-          <p class="tl-desc">Ultima pauză scurtă a programului.</p>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="practice" role="listitem">
-        <div class="tl-time">12:10–<br>12:55</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">Atelier · 45 min</span>
-          <h3 class="tl-title">Editare Academică Asistată de AI</h3>
-          <div class="tl-desc"><ul>
-            <li>Corecție stilistică &amp; gramaticală avansată a articolelor proprii</li>
-            <li>Traducere academică de rezumate (EN ↔ RO) cu păstrarea registrului formal</li>
-            <li>Optimizarea structurii &amp; clarității unui articol pentru reviste internaționale</li>
-          </ul></div>
-        </div></div>
-      </div>
-
-      <div class="tl-row" data-t="wrap" role="listitem">
-        <div class="tl-time">12:55–<br>13:00</div>
-        <div class="tl-node"></div>
-        <div class="tl-body"><div class="tl-card">
-          <span class="tl-badge">🎓 Finalizare Program</span>
-          <h3 class="tl-title">Ceremonie de Finalizare &amp; Evaluare Finală</h3>
-          <p class="tl-desc">Distribuirea certificatelor de participare. Vă rugăm să completați evaluarea finală a întregului program — feedback-ul dvs. este esențial!</p>
-          <div class="tl-links">
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru evaluarea finală -->
-            <a href="https://forms.gle/EVALUARE-FINALA-PROGRAM" class="tl-btn tl-btn-red" target="_blank" rel="noopener">⭐ Evaluare Finală a Programului</a>
-            <!-- ⬇ ÎNLOCUIȚI href cu link-ul real Google Form pentru feedback Modulul 4 -->
-            <a href="https://forms.gle/FEEDBACK-M4-29-IUNIE" class="tl-btn tl-btn-green" target="_blank" rel="noopener">📝 Feedback Modulul 4</a>
-          </div>
-        </div></div>
-      </div>
-
-    </div>
-  </section>
-
-</div><!-- /wrap -->
+  <p class="lp-notice">
+    Agenda completă a programului va fi actualizată înainte de fiecare sesiune.<br>
+    Întrebări? Contactați: <a href="mailto:anastasia.maidacenco@gmail.com">anastasia.maidacenco@gmail.com</a>
+  </p>
 </main>
 
-<!-- ╔══════════════════════════════════════════╗
-     ║  FORMULARE — linkuri centralizate        ║
-     ╚══════════════════════════════════════════╝ -->
-<section class="forms-section" id="formulare" aria-labelledby="forms-h">
-  <div class="wrap">
-    <div class="section-head">
-      <h2 id="forms-h">📋 Formulare &amp; Linkuri Utile</h2>
-      <p>Accesați rapid toate formularele programului. <strong>Înlocuiți linkurile placeholder cu URL-urile reale ale formularelor Google.</strong></p>
-    </div>
-
-    <p class="forms-group-title">Prezență zilnică</p>
-    <div class="forms-grid">
-      <!-- ⬇ ÎNLOCUIȚI toate href-urile cu linkurile reale -->
-      <a href="https://forms.gle/PREZENTA-22-IUNIE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#e0f2fe">📋</div>
-        <div class="form-name">Prezență · 22 Iunie</div>
-        <div class="form-desc">Modulul 1 – Confirmați participarea la prima sesiune.</div>
-        <div class="form-cta">Deschide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="https://forms.gle/PREZENTA-24-IUNIE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#e0f2fe">📋</div>
-        <div class="form-name">Prezență · 24 Iunie</div>
-        <div class="form-desc">Modulul 2 – Confirmați participarea la a doua sesiune.</div>
-        <div class="form-cta">Deschide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="https://forms.gle/PREZENTA-26-IUNIE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#e0f2fe">📋</div>
-        <div class="form-name">Prezență · 26 Iunie</div>
-        <div class="form-desc">Modulul 3 – Confirmați participarea la a treia sesiune.</div>
-        <div class="form-cta">Deschide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="https://forms.gle/PREZENTA-29-IUNIE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#e0f2fe">📋</div>
-        <div class="form-name">Prezență · 29 Iunie</div>
-        <div class="form-desc">Modulul 4 – Confirmați participarea la sesiunea finală.</div>
-        <div class="form-cta">Deschide <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-    </div>
-
-    <p class="forms-group-title">Feedback după fiecare modul</p>
-    <div class="forms-grid">
-      <a href="https://forms.gle/FEEDBACK-M1-22-IUNIE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#d1fae5">📝</div>
-        <div class="form-name">Feedback · Modulul 1</div>
-        <div class="form-desc">Ce a mers bine? Ce poate fi îmbunătățit? (22 Iunie)</div>
-        <div class="form-cta">Completați <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="https://forms.gle/FEEDBACK-M2-24-IUNIE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#d1fae5">📝</div>
-        <div class="form-name">Feedback · Modulul 2</div>
-        <div class="form-desc">Evaluați calitatea și relevanța sesiunii din 24 Iunie.</div>
-        <div class="form-cta">Completați <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="https://forms.gle/FEEDBACK-M3-26-IUNIE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#d1fae5">📝</div>
-        <div class="form-name">Feedback · Modulul 3</div>
-        <div class="form-desc">Reflectați asupra celor învățate pe 26 Iunie.</div>
-        <div class="form-cta">Completați <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="https://forms.gle/FEEDBACK-M4-29-IUNIE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#d1fae5">📝</div>
-        <div class="form-name">Feedback · Modulul 4</div>
-        <div class="form-desc">Feedback pentru ultima sesiune – 29 Iunie.</div>
-        <div class="form-cta">Completați <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-    </div>
-
-    <p class="forms-group-title">Întrebări &amp; Evaluare finală</p>
-    <div class="forms-grid">
-      <a href="https://forms.gle/INTREBARI-GENERALE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#ede9fe">❓</div>
-        <div class="form-name">Întrebări &amp; Sugestii</div>
-        <div class="form-desc">Adresați întrebări formatorului sau propuneți subiecte suplimentare oricând în timpul programului.</div>
-        <div class="form-cta">Adresați o întrebare <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="https://forms.gle/EVALUARE-FINALA-PROGRAM" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#fee2e2">⭐</div>
-        <div class="form-name">Evaluare Finală a Programului</div>
-        <div class="form-desc">Evaluați întregul program de 16 ore, oferiți un calificativ general și recomandări pentru edițiile viitoare.</div>
-        <div class="form-cta">Evaluați programul <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-      <a href="https://forms.gle/RANKING-INSTRUMENTE" class="form-card" target="_blank" rel="noopener">
-        <div class="form-icon" style="background:#fef3c7">🏆</div>
-        <div class="form-name">Clasament Instrumente AI</div>
-        <div class="form-desc">Votați instrumentele AI cele mai utile descoperite în program și ajutați-ne să îmbunătățim curricula.</div>
-        <div class="form-cta">Votați <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ╔══════════════════════════════════════════╗
-     ║  FOOTER                                  ║
-     ╚══════════════════════════════════════════╝ -->
-<footer>
+<!-- FOOTER -->
+<footer class="lp-footer">
   <strong>Universitatea de Stat „Alecu Russo" din Bălți (USARB)</strong><br>
-  Program de Formare Continuă · <em>Inteligența Artificială în Educație și Cercetare</em> · Maidacenco Anastasia · anastasia.maidacenco@gmail.com<br>
+  Formare Continuă · <em>Inteligența Artificială în Educație și Cercetare</em><br>
+  Maidacenco Anastasia · <a href="mailto:anastasia.maidacenco@gmail.com" style="color:rgba(255,255,255,.5)">anastasia.maidacenco@gmail.com</a>
 </footer>
 
-<!-- BACK TO TOP -->
-<a href="#top" id="btt" aria-label="Înapoi la începutul paginii">
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
-</a>
-
-<!-- ╔══════════════════════════════════════════╗
-     ║  SCRIPT                                  ║
-     ╚══════════════════════════════════════════╝ -->
 <script>
-  const panels = document.querySelectorAll('.panel');
-  const tabs   = document.querySelectorAll('.tab');
-  const chips  = document.querySelectorAll('.chip');
+  // ── Countdown helper ──────────────────────────────────────
+  function renderCountdown(targetDate, containerId) {
+    const el = document.getElementById(containerId);
+    if (!el) return;
 
-  function go(i) {
-    panels.forEach((p, idx) => p.classList.toggle('active', idx === i));
-    tabs.forEach((t, idx) => {
-      t.classList.toggle('active', idx === i);
-      t.setAttribute('aria-selected', idx === i);
-    });
-    chips.forEach((c, idx) => c.classList.toggle('active', idx === i));
-    // Smooth-scroll to tabs without jarring jump
-    const bar = document.querySelector('.tab-bar');
-    bar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    function tick() {
+      const now  = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        // Session day has arrived — unlock the card
+        const card = el.closest('.session-card');
+        if (card) {
+          card.classList.remove('is-soon');
+          card.classList.add('is-active');
+          card.querySelector('.card-stripe').style.background = 'var(--accent)';
+          const badge = card.querySelector('.badge-soon');
+          if (badge) {
+            badge.outerHTML = '<span class="badge-active"><span class="dot"></span>Disponibil acum</span>';
+          }
+          const lock = card.querySelector('.card-lock');
+          if (lock) {
+            lock.outerHTML = '<a href="agenda.html" class="card-btn">Accesați Agenda <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>';
+          }
+        }
+        el.remove();
+        return;
+      }
+
+      const days  = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const mins  = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+
+      el.innerHTML =
+        unit(days,  'zile') +
+        sep() +
+        unit(hours, 'ore') +
+        sep() +
+        unit(mins,  'min');
+    }
+
+    tick();
+    setInterval(tick, 30000); // update every 30 s
   }
 
-  // Back-to-top visibility
-  const btt = document.getElementById('btt');
-  window.addEventListener('scroll', () => {
-    btt.classList.toggle('show', window.scrollY > 380);
-  }, { passive: true });
+  function unit(n, label) {
+    return `<span class="cd-unit"><span class="cd-num">${String(n).padStart(2,'0')}</span><span class="cd-label">${label}</span></span>`;
+  }
+  function sep() {
+    return '<span class="cd-sep">·</span>';
+  }
 
-  // Auto-select the next upcoming session on page load
-  (function autoTab() {
-    const today = new Date();
-    const dates = [
-      new Date(2026, 5, 22),
-      new Date(2026, 5, 24),
-      new Date(2026, 5, 26),
-      new Date(2026, 5, 29),
-    ];
-    // Check if today matches a session date
-    for (let i = 0; i < dates.length; i++) {
-      if (today.toDateString() === dates[i].toDateString()) { go(i); return; }
-    }
-    // Otherwise jump to next upcoming session
-    const next = dates.findIndex(d => d > today);
-    if (next > 0) go(next);
-    // If all sessions passed, stay on last day
-    else if (next === -1) go(3);
-  })();
+  // ── Wire up countdowns ────────────────────────────────────
+  renderCountdown(new Date(2026, 5, 24, 9, 30), 'cd-m2');  // June 24
+  renderCountdown(new Date(2026, 5, 26, 9, 30), 'cd-m3');  // June 26
+  renderCountdown(new Date(2026, 5, 29, 9, 30), 'cd-m4');  // June 29
 </script>
 
 </body>
