@@ -1,9 +1,8 @@
-
 I. Analiza răspunsurilor și Statistica datelor
 1. Distribuția pe Catedre și Subdiviziuni
 Publicul este format dintr-un colectiv interdisciplinar, cu o prezență semnificativă din domeniile juridic, economic și pedagogic/filologic:
 •	Catedra de drept: 12 participanți (19.7%)
-•	Colegiul Pedagogic „Ion Creangă” din cadrul USARB: 10 participanți (16.4%)
+•	Colegiul Pedagogic "Ion Creangă” din cadrul USARB: 10 participanți (16.4%)
 •	Catedra de științe economice: 9 participanți (14.8%)
 •	Catedra de filologie engleză și germană: 6 participanți (9.8%)
 •	Catedra de matematică și informatică: 6 participanți (9.8%)
@@ -24,17 +23,17 @@ Nivelul inițial este preponderent intermediar-ocazional. Participanții cunosc 
 •	Doar au auzit de AI, dar nu au utilizat-o: 7 persoane (11.5%)
 4. Sinteza sugestiilor și așteptărilor participanților
 Din răspunsurile libere ale cadrelor didactice se desprind câteva solicitări clare:
-•	Orientare practică: Solicitări explicite pentru „exemple practice”, „studii de caz” și „aplicații concrete în educație și cercetare”.
+•	Orientare practică: Solicitări explicite pentru "exemple practice”, "studii de caz” și "aplicații concrete în educație și cercetare”.
 •	Managementul documentelor mari: Dorința de a învăța cum să folosească AI ca motor de căutare avansat și pentru analiza/sinteza volumelor mari de text.
 •	Contextualizare pe discipline: Adaptarea utilizării AI în predarea curentă (ex: crearea de spețe juridice, simulări de business, analiza de text filologic/traduceri, aplicații de psihologie).
 •	Interactivitate și flexibilitate: Abordări interactive, ajustate la nevoile individuale ale beneficiarilor.
-II. Propunere de Curriculum: „Inteligența Artificială în Educație și Cercetare”
+II. Propunere de Curriculum: "Inteligența Artificială în Educație și Cercetare”
 Durata totală: 16 ore academice (recomandat: 4 module cate 2 perechi).
 Modulul 1: Fundamentele IA Generative și Ingineria Prompturilor (Prompt Engineering)
 •	Durată: 4 ore academice (1 oră Teorie + 3 ore Practică)
 •	Obiective: Înțelegerea modului de funcționare a LLM-urilor, evitarea riscurilor etice și stăpânirea tehnicilor de interogare eficientă.
 •	Teme teoretice:
-o	Ce este IA generativă și cum „gândesc” modelele de limbaj (ChatGPT, Gemini, Claude, Copilot).
+o	Ce este IA generativă și cum "gândesc” modelele de limbaj (ChatGPT, Gemini, Claude, Copilot).
 o	Limitele IA: fenomenul de halucinație, bias-urile algoritmice, protecția datelor cu caracter personal și drepturile de autor.
 •	Activități practice (Atelier):
 o	Anatomia unui prompt perfect: Utilizarea formulei Rol + Context + Sarcină + Constrângeri + Format de ieșire.
@@ -67,7 +66,7 @@ Modulul 4: IA în Cercetare Științifică și Analiză de Text (Documente Mari)
 o	Bunele practici etice privind utilizarea IA în scrierea articolelor științifice (politici Elsevier, Springer, standarde APA/Chicago).
 o	Diferența dintre motoarele de căutare tradiționale și motoarele de căutare academice bazate pe IA semantică.
 •	Activități practice (Atelier):
-o	Sinteza literaturii cu instrumente specializate: Utilizarea Consensus, Elicit sau Perplexity AI pentru a adresa întrebări de cercetare concrete și a primi răspunsuri bazate exclusiv pe articole științifice indexate, cu citări exacte (ex: „Care sunt efectele evaluării formative asupra profesorilor debutanți?” sau „Cum afectează reziliența organizațională echilibrul financiar în perioade de criză?”).
+o	Sinteza literaturii cu instrumente specializate: Utilizarea Consensus, Elicit sau Perplexity AI pentru a adresa întrebări de cercetare concrete și a primi răspunsuri bazate exclusiv pe articole științifice indexate, cu citări exacte (ex: "Care sunt efectele evaluării formative asupra profesorilor debutanți?” sau "Cum afectează reziliența organizațională echilibrul financiar în perioade de criză?”).
 o	Analiza documentelor de mari dimensiuni (Chat cu PDF): Încărcarea unor monografii, legi (pentru drept) sau ghiduri metodologice lungi în instrumente precum NotebookLM (Google), ChatPDF sau Claude AI pentru a extrage concepte-cheie, a compara teorii sau a sintetiza modificările legislative într-un tabel.
 o	Editare academică: Utilizarea IA pentru corectarea stilistică, traducerea academică avansată a rezumatelor sau optimizarea structurii unui articol științific propriu.
 III. Recomandări pentru Livrarea Cursului
