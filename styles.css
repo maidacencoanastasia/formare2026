@@ -701,6 +701,19 @@ main {
     box-shadow: var(--sh-md);
 }
 
+.form-card.locked {
+    pointer-events: none;
+    cursor: default;
+    opacity: .42;
+    filter: grayscale(.55);
+}
+.form-card.locked:hover {
+    background: var(--bg);
+    border-color: var(--border);
+    transform: none;
+    box-shadow: none;
+}
+
 .form-icon {
     width: 44px;
     height: 44px;
