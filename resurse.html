@@ -110,7 +110,7 @@
       border-color: rgba(15,52,96,.25);
     }
     .tool-top {
-      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+      display: flex; flex-direction: column; gap: 7px;
     }
     .tool-name {
       font-family: 'Montserrat', sans-serif;
@@ -118,7 +118,7 @@
       color: var(--primary); line-height: 1.2;
     }
     .tool-badges {
-      display: flex; gap: 5px; flex-wrap: wrap; flex-shrink: 0;
+      display: flex; gap: 5px; flex-wrap: wrap;
     }
     .badge {
       display: inline-flex; align-items: center; gap: 3px;
@@ -551,7 +551,7 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
     </span>
     IA Specializată pentru Educație
-    <span class="sec-count">4 instrumente</span>
+    <span class="sec-count">5 instrumente</span>
   </h2>
 
   <div class="tools-grid">
@@ -648,6 +648,35 @@
       </a>
     </div>
 
+    <!-- NOTEBOOKLM -->
+    <div class="tool-card">
+      <div class="tool-top">
+        <p class="tool-name">NotebookLM</p>
+        <div class="tool-badges">
+          <span class="badge badge-free">Gratuit</span>
+          <span class="badge badge-edu">Cercetare &amp; Studiu</span>
+        </div>
+      </div>
+      <p class="tool-desc">Asistent IA de la Google pentru cercetare și studiu, bazat pe documentele proprii. Încărcați PDF-uri, articole, notițe sau slide-uri și puneți întrebări, generați rezumate, ghiduri de studiu și chiar podcasturi audio din materialele dvs.</p>
+      <ul class="tool-features">
+        <li>Rezumate și răspunsuri bazate strict pe sursele tale</li>
+        <li>Generare de ghiduri de studiu, cronologii și FAQ-uri</li>
+        <li>Podcast audio „Deep Dive" generat automat din documente</li>
+        <li>Complet gratuit, fără limite de utilizare</li>
+      </ul>
+      <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:4px;">
+        <a href="https://notebooklm.google.com" target="_blank" rel="noopener noreferrer" class="tool-link">
+          Accesați NotebookLM
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+        <a href="https://nlmexporter.keeman.app/" target="_blank" rel="noopener noreferrer" class="tool-link" style="background:var(--primary-light);">
+          Quiz Exporter
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <p style="font-size:.76rem; color:var(--muted); line-height:1.5;">&#128279; <strong style="color:var(--text);">NotebookLM Quiz Exporter</strong> – extensie care exportă quiz-urile generate de NotebookLM în format Google Forms sau CSV, gata de utilizat în clasă.</p>
+    </div>
+
   </div><!-- /tools-grid educație -->
 
   <!-- ══════════════════════════════════
@@ -658,7 +687,7 @@
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
     </span>
     Articole &amp; Resurse de Lectură
-    <span class="sec-count">7 resurse</span>
+    <span class="sec-count">8 resurse</span>
   </h2>
 
   <div class="articles-grid">
@@ -743,6 +772,22 @@
       <p class="article-desc">Extensie Chrome care transformă prezentările Storybook în videoclipuri animate folosind Gemini AI. Util pentru crearea de conținut educațional multimedia: transformă documentele sau prezentările în materiale video captivante, fără editare manuală.</p>
       <a href="https://chromewebstore.google.com/detail/gemini-storybook-video-ex/fegcbihjgfnhknhonjohhmndhdghaene" target="_blank" rel="noopener noreferrer" class="article-link">
         Instalați extensia
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+
+    <!-- ARTICLE 8: 20 PROMPTURI PDF -->
+    <div class="article-card" style="border-color: rgba(232,160,32,.4); background: linear-gradient(135deg, #fff 85%, rgba(232,160,32,.06) 100%);">
+      <span class="article-tag tag-prompt">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Ghid PDF
+      </span>
+      <p class="article-title">20 Prompturi ChatGPT Esențiale pentru Profesioniști</p>
+      <p class="article-source">Ghid de Productivitate · Adaptat în română</p>
+      <p class="article-desc">Colecție de 20 de prompturi gata de utilizat pentru specialiști și manageri: prioritizarea sarcinilor, rezumat de ședințe, postări LinkedIn, planuri SMART, rapoarte săptămânale, gestionarea crizelor și multe altele. Înlocuiește variabilele <code style="font-size:.8em; background:var(--bg); padding:1px 5px; border-radius:4px;">[...]</code> cu datele tale reale.</p>
+      <a href="20_Prompturi_ChatGPT_Productivitate.pdf" target="_blank" rel="noopener noreferrer" class="article-link" style="border-color:var(--accent); color:#92600a;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Deschide PDF
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       </a>
     </div>
